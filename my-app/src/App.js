@@ -5,7 +5,6 @@ import QuestionsScreen from "./components/QuestionsScreen";
 function App() {
   return (
     <div className="App">
-      {/* <OpeningScreen /> */}
       <QuestionsScreen />
     </div>
   );
