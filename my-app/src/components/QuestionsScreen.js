@@ -1,8 +1,8 @@
 import React from "react";
+import Questions from "./Questions";
 
 export default function QuestionsScreen() {
   const [questionData, setQuestionData] = React.useState({});
-  const [answer, setAnswers] = React.useState({});
 
   React.useEffect(() => {
     fetch(
@@ -11,13 +11,11 @@ export default function QuestionsScreen() {
       .then((response) => response.json())
       .then((data) => setQuestionData(data.results));
   }, []);
-  console.log(questionData);
-
+  //console.log(questionData);
   return (
     <div className="questions-screen">
-      <h3>{questionData[0].question}</h3>
-      <p>{questionData[0].incorrect_answers}</p>
-      <hr />
+      <Questions data={questionData} />
+      <button>Check answers</button>
     </div>
   );
 }
