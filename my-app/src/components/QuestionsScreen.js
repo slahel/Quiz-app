@@ -1,8 +1,8 @@
 import React from "react";
-import Questions from "./Questions";
+//import Questions from "./Questions";
 
 export default function QuestionsScreen() {
-  const [questionData, setQuestionData] = React.useState({});
+  const [questionData, setQuestionData] = React.useState([]);
 
   React.useEffect(() => {
     fetch(
@@ -11,38 +11,23 @@ export default function QuestionsScreen() {
       .then((response) => response.json())
       .then((data) => setQuestionData(data.results));
   }, []);
-  // export default function App() {
-  //     const jokeElements = jokesData.map(joke => {
-  //         return (
-  //             <Joke
-  //                 key={joke.id}
-  //                 setup={joke.setup}
-  //                 punchline={joke.punchline}
-  //             />
-  //         )
-  //     })
-  //     return (
-  //         <div>
-  //             {jokeElements}
-  //         </div>
-  //     )
-  // }
 
-  // const diceElements = dice.map((die) => (
-  //   <Die
-  //     key={die.id}
-  //     value={die.value}
-  //     isHeld={die.isHeld}
-  //     holdDice={() => holdDice(die.id)}
-  //   />
+  // const element = questionData.map((question, index) => (
+  //   <div key={index}>
+  //     <Questions data={questionData} />
+  //   </div>
   // ));
-  const questionsElements = questionData.map((question, index) => {
-    return <Questions data={question.questionData} key={index} />;
-  });
+
+  const questionElement = questionData.map((element, index) => (
+    <div key={index}>
+      <h3>{`${element.question}`}</h3>
+      <hr />
+    </div>
+  ));
 
   return (
     <div className="questions-screen">
-      {questionsElements}
+      {questionElement}
       {/* <Questions data={questionData} /> */}
       <button>Check answers</button>
     </div>
