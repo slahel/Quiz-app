@@ -11,9 +11,11 @@ export default function QuestionsScreen() {
       .then((data) => setQuestionData(data.results));
   }, []);
 
+  console.log(questionData);
   const questionElement = questionData.map((element, index) => (
     <div key={index}>
       <h3>{`${element.question}`}</h3>
+      <p>{`${element.incorrect_answers}`}</p>
       <hr />
     </div>
   ));
@@ -21,6 +23,7 @@ export default function QuestionsScreen() {
   return (
     <div className="questions-screen">
       {questionElement}
+
       <button>Check answers</button>
     </div>
   );
