@@ -1,5 +1,5 @@
 import "./App.css";
-import OpeningScreen from "./components/OpeningScreen";
+//import OpeningScreen from "./components/OpeningScreen";
 import QuestionsScreen from "./components/QuestionsScreen";
 
 function App() {

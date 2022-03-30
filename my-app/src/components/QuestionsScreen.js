@@ -1,7 +1,10 @@
 import React from "react";
+//import { nanoid } from "nanoid";
+import QuestionElements from "./QuestionElements";
 
 export default function QuestionsScreen() {
   const [questionData, setQuestionData] = React.useState([]);
+  //const [questionElement, setQuestionElement = React.useState([]);
 
   React.useEffect(() => {
     fetch(
@@ -11,14 +14,16 @@ export default function QuestionsScreen() {
       .then((data) => setQuestionData(data.results));
   }, []);
 
-  console.log(questionData);
-  const questionElement = questionData.map((element, index) => (
-    <div key={index}>
-      <h3>{`${element.question}`}</h3>
-      <p>{`${element.incorrect_answers}`}</p>
-      <hr />
-    </div>
-  ));
+  // const questionElement = questionData.map((element, index) => (
+  //   <div key={index}>{element.question}</div>
+  // ));
+  const questionElement = questionData.map((items, index) => {
+    return (
+      <div key={index}>
+        <QuestionElements data={items} />
+      </div>
+    );
+  });
 
   return (
     <div className="questions-screen">
