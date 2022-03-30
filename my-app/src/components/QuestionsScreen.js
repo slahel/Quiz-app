@@ -19,7 +19,7 @@ export default function QuestionsScreen() {
   // ));
   const questionElement = questionData.map((items, index) => {
     return (
-      <div key={index}>
+      <div key={index} className="question-elements">
         <QuestionElements data={items} />
       </div>
     );
