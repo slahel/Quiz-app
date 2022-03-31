@@ -1,11 +1,16 @@
-/* li {
-  display: inline-flex;
-  margin: 5px 20px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  gap: 20px;
+  justify-content: space-around;
+}
+.displayed-answers {
+  text-align: center;
   border: solid 1px #4d5b9e;
   border-radius: 20px;
   padding: 5px 10px;
   cursor: pointer;
 }
-li:active {
+.displayed-answers:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-} */
+}
