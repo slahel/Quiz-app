@@ -1,22 +1,7 @@
-.question-elements {
-  margin: 15px;
-  max-height: 100%;
-}
-
-.answers {
+li {
   display: inline-flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.answer-items {
-  border: solid 1px red;
+  margin: 5px 20px;
+  border: solid 1px #4d5b9e;
   border-radius: 20px;
-  padding: 5px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  margin: 0 20px;
+  padding: 5px 10px;
 }

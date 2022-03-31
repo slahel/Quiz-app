@@ -1,5 +1,6 @@
 import React from "react";
 import "./Questions.css";
+import bootstrap from "bootstrap";
 
 export default function QuestionElements(props) {
   //const [answers,setAnswers]=React.useState([])
@@ -18,16 +19,14 @@ export default function QuestionElements(props) {
 
   const displayedAnswers = answers.map((items, index) => {
     return (
-      <div className="answers">
-        <span key={index} className="answer-items">
-          {items}
-        </span>
-      </div>
+      <li key={index} className="grid">
+        {items}
+      </li>
     );
   });
 
   return (
-    <div>
+    <div className="container">
       <h3>{props.data.question}</h3>
       {displayedAnswers}
       <hr />

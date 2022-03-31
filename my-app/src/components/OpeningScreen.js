@@ -5,7 +5,6 @@ export default function OpeningScreen() {
     <div className="opening-screen">
       <h1>Quizzical</h1>
       <h3>Test your general knowledge in 5 questions</h3>
-      <button>Start quiz</button>
     </div>
   );
 }
