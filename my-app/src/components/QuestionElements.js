@@ -10,6 +10,8 @@ export default function QuestionElements(props) {
 
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
+  wrongAnswers.id = nanoid();
+  rightAnswer.id = nanoid();
 
   function holdAnswers(id) {
     setChosenAnswers((oldItem) =>
