@@ -13,8 +13,12 @@ function App() {
   return (
     <div className="App">
       {!game && <OpeningScreen />}
-      {!game && <button onClick={startGame}>Start quiz</button>}
       {game && <QuestionsScreen />}
+      {!game ? (
+        <button onClick={startGame}>Start quiz</button>
+      ) : (
+        <button>Check answers</button>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-//import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 import QuestionElements from "./QuestionElements";
 
 export default function QuestionsScreen() {
@@ -20,16 +20,10 @@ export default function QuestionsScreen() {
   const questionElement = questionData.map((items, index) => {
     return (
       <div key={index} className="question-elements">
-        <QuestionElements data={items} />
+        <QuestionElements data={items} id={nanoid()} />
       </div>
     );
   });
 
-  return (
-    <div className="questions-screen">
-      {questionElement}
-
-      <button>Check answers</button>
-    </div>
-  );
+  return <div className="questions-screen">{questionElement}</div>;
 }

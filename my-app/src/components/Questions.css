@@ -1,4 +1,4 @@
-li {
+/* li {
   display: inline-flex;
   margin: 5px 20px;
   border: solid 1px #4d5b9e;
@@ -8,4 +8,4 @@ li {
 }
 li:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-}
+} */
