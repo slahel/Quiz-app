@@ -1,6 +1,6 @@
 import React from "react";
 import "./Questions.css";
-import Answers from "./Answers";
+//import Answers from "./Answers";
 import { nanoid } from "nanoid";
 
 //import bootstrap from "bootstrap";

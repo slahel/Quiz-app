@@ -1,14 +1,14 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  gap: 20px;
-  justify-content: space-around;
+  grid-template-columns: auto auto auto auto;
+
+  justify-content: space-evenly;
 }
 .displayed-answers {
   text-align: center;
   border: solid 1px #4d5b9e;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   cursor: pointer;
 }
 .displayed-answers:active {
