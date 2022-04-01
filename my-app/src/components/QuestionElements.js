@@ -10,18 +10,26 @@ export default function QuestionElements(props) {
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
 
-  function ChosenAnswers(id) {
+  function ChosenAnswers(id, index) {
     setChosenAnswers(true);
   }
+
+  // function holdDice(id) {
+  //   setDice((oldDice) =>
+  //     oldDice.map((die) => {
+  //       return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+  //     })
+  //   );
+  // }
 
   var shuffle = require("shuffle-array"),
     answers = wrongAnswers.concat(rightAnswer);
   shuffle(answers);
 
-  // const answerStyles = {
-  //   backgroundColor: chosenAnswers ? " #4d5b9e" : "transparent",
-  //   color: chosenAnswers ? "white" : "black",
-  // };
+  const answerStyles = {
+    backgroundColor: chosenAnswers ? " #4d5b9e" : "transparent",
+    color: chosenAnswers ? "white" : "black",
+  };
 
   const displayedAnswers = answers.map((item, index) => {
     return (
@@ -29,7 +37,7 @@ export default function QuestionElements(props) {
         key={index}
         id={nanoid()}
         className="displayed-answers"
-        //style={answerStyles}
+        style={answerStyles}
         onClick={ChosenAnswers}
       >
         {item}
