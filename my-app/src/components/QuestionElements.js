@@ -5,14 +5,27 @@ import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
   const [chosenAnswers, setChosenAnswers] = React.useState(false);
-  console.log(props.data);
+  //console.log(props.data);
   //Answers element
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
-
-  function ChosenAnswers(id, index) {
+  //test
+  function ChosenAnswers(index) {
     setChosenAnswers(true);
   }
+
+  // const handleSelectAnswer = (questionId, answer) => {
+  // 		if (!isGameOver) {
+  // 			setQuestionsArray(prevQuestionsArray => (
+  // 				prevQuestionsArray.map(question => (
+  // 					question.id === questionId
+  // 						? {...question, selectedAnswer: answer }
+  // 						: question
+  // 				))
+  // 			));
+  // 		}
+  // 	}
+  // end test
 
   // function holdDice(id) {
   //   setDice((oldDice) =>
@@ -39,11 +52,19 @@ export default function QuestionElements(props) {
         className="displayed-answers"
         style={answerStyles}
         onClick={ChosenAnswers}
+        value={item}
       >
         {item}
       </div>
     );
   });
+  //console.log(displayedAnswers);
+  displayedAnswers.forEach((element) => console.log(element.props.value));
+  displayedAnswers.forEach((element) => console.log(element.props.id));
+  //console.log(displayedAnswers[1].props.value);
+  //console.log(displayedAnswers.map(props.id));
+  //console.log(displayedAnswers.[{key}]);
+  // console.log(displayedAnswers[{ index }].props.id);
 
   //   <Answers
   //     key={item.index}
