@@ -7,8 +7,7 @@ export default function QuestionElements(props) {
   const [chosenAnswers, setChosenAnswers] = React.useState(false);
   //console.log(props.data);
   //Answers element
-  const wrongAnswers = props.data.incorrect_answers;
-  const rightAnswer = props.data.correct_answer;
+
   //test
   function ChosenAnswers(index) {
     setChosenAnswers(true);
@@ -34,11 +33,14 @@ export default function QuestionElements(props) {
   //     })
   //   );
   // }
+  const wrongAnswers = props.data.incorrect_answers;
+  const rightAnswer = props.data.correct_answer;
 
   var shuffle = require("shuffle-array"),
     answers = wrongAnswers.concat(rightAnswer);
   shuffle(answers);
 
+  console.log(answers);
   const answerStyles = {
     backgroundColor: chosenAnswers ? " #4d5b9e" : "transparent",
     color: chosenAnswers ? "white" : "black",
