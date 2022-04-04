@@ -1,17 +1,41 @@
 import React from "react";
 import "./Questions.css";
-//import Answers from "./Answers";
+import AnswersElement from "./AnswersElement";
 import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
-  const [chosenAnswers, setChosenAnswers] = React.useState(false);
-  //console.log(props.data);
-  //Answers element
+  // const [chosenAnswers, setChosenAnswers] = React.useState(false);
 
-  //test
-  function ChosenAnswers(index) {
-    setChosenAnswers(true);
+  const wrongAnswers = props.data.incorrect_answers;
+  const rightAnswer = props.data.correct_answer;
+
+  var shuffle = require("shuffle-array"),
+    answers = wrongAnswers.concat(rightAnswer);
+  shuffle(answers);
+  //console.log(wrongAnswers);
+
+  function ChoseAnswers(id) {
+    console.log(id);
   }
+
+  const displayedAnswers = answers.map((items, index, isChosen, id) => {
+    return (
+      <div key={index} className="displayed-answers">
+        <AnswersElement
+          value={items}
+          id={nanoid()}
+          isChosen={false}
+          ChoseAnswers={() => ChoseAnswers(index)}
+          //holdDice={() => holdDice(die.id)}
+        />
+      </div>
+    );
+  });
+
+  //console.log(displayedAnswers);
+  //displayedAnswers.forEach((element) => console.log(element.props.value));
+  // displayedAnswers.forEach((element) => console.log(element.props.id));
+  // displayedAnswers.forEach((element) => console.log(element.props.ischosen));
 
   // const handleSelectAnswer = (questionId, answer) => {
   // 		if (!isGameOver) {
@@ -33,40 +57,6 @@ export default function QuestionElements(props) {
   //     })
   //   );
   // }
-  const wrongAnswers = props.data.incorrect_answers;
-  const rightAnswer = props.data.correct_answer;
-
-  var shuffle = require("shuffle-array"),
-    answers = wrongAnswers.concat(rightAnswer);
-  shuffle(answers);
-
-  console.log(answers);
-  const answerStyles = {
-    backgroundColor: chosenAnswers ? " #4d5b9e" : "transparent",
-    color: chosenAnswers ? "white" : "black",
-  };
-
-  const displayedAnswers = answers.map((item, index) => {
-    return (
-      <div
-        key={index}
-        id={nanoid()}
-        className="displayed-answers"
-        style={answerStyles}
-        onClick={ChosenAnswers}
-        value={item}
-      >
-        {item}
-      </div>
-    );
-  });
-  //console.log(displayedAnswers);
-  displayedAnswers.forEach((element) => console.log(element.props.value));
-  displayedAnswers.forEach((element) => console.log(element.props.id));
-  //console.log(displayedAnswers[1].props.value);
-  //console.log(displayedAnswers.map(props.id));
-  //console.log(displayedAnswers.[{key}]);
-  // console.log(displayedAnswers[{ index }].props.id);
 
   //   <Answers
   //     key={item.index}

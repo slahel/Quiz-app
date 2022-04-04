@@ -8,7 +8,6 @@
   text-align: center;
   border: solid 1px #4d5b9e;
   border-radius: 20px;
-  padding: 5px 15px;
   cursor: pointer;
 }
 .displayed-answers:active {

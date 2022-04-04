@@ -4,7 +4,7 @@ import QuestionElements from "./QuestionElements";
 
 export default function QuestionsScreen() {
   const [questionData, setQuestionData] = React.useState([]);
-  const [gameOver, setGameOver] = React.useState(false);
+  //const [gameOver, setGameOver] = React.useState(false);
 
   React.useEffect(() => {
     fetch(
@@ -12,7 +12,7 @@ export default function QuestionsScreen() {
     )
       .then((response) => response.json())
       .then((data) => setQuestionData(data.results));
-  }, [gameOver]);
+  }, []);
 
   const questionElement = questionData.map((items, index) => {
     return (
