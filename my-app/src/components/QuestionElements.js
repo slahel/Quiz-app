@@ -8,11 +8,10 @@ export default function QuestionElements(props) {
 
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
+  const answers = wrongAnswers.concat(rightAnswer);
 
-  var shuffle = require("shuffle-array"),
-    answers = wrongAnswers.concat(rightAnswer);
+  var shuffle = require("shuffle-array");
   shuffle(answers);
-  //console.log(wrongAnswers);
 
   function ChoseAnswers(id) {
     console.log(id);
