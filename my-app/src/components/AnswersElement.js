@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function AnswersElement(props) {
-  console.log(props);
+  //console.log(props);
   const styles = {
     backgroundColor: props.isChosen ? "#d6dbf5" : "transparent ",
     borderRadius: "20px",
