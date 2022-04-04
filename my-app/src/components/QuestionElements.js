@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
   // const [chosenAnswers, setChosenAnswers] = React.useState(false);
-
+  console.log(props.id);
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
   const answers = wrongAnswers.concat(rightAnswer);
@@ -17,14 +17,15 @@ export default function QuestionElements(props) {
     console.log(id);
   }
 
-  const displayedAnswers = answers.map((items, index, isChosen, id) => {
+  const displayedAnswers = answers.map((items) => {
+    const id = nanoid();
     return (
-      <div key={index} className="displayed-answers">
+      <div key={id} className="displayed-answers">
         <AnswersElement
           value={items}
           id={nanoid()}
           isChosen={false}
-          ChoseAnswers={() => ChoseAnswers(index)}
+          ChoseAnswers={() => ChoseAnswers(id)}
           //holdDice={() => holdDice(die.id)}
         />
       </div>
