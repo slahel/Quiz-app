@@ -5,9 +5,12 @@ import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
   //console.log(props.id);
+  //
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
-  const answers = wrongAnswers.concat(rightAnswer);
+  const [answers, setAnswers] = React.useState(
+    wrongAnswers.concat(rightAnswer)
+  );
 
   var shuffle = require("shuffle-array");
   shuffle(answers);
