@@ -4,8 +4,7 @@ import AnswersElement from "./AnswersElement";
 import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
-  // const [chosenAnswers, setChosenAnswers] = React.useState(false);
-  console.log(props.id);
+  //console.log(props.id);
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
   const answers = wrongAnswers.concat(rightAnswer);
@@ -13,20 +12,34 @@ export default function QuestionElements(props) {
   var shuffle = require("shuffle-array");
   shuffle(answers);
 
+  //Choose an answer
+  //
   function ChoseAnswers(id) {
+    // const [itemAnswers, setItemAnswers] = React.useState([]);
     console.log(id);
+    displayedAnswers.map((item) => {
+      return item.id === id ? { ...item, isChosen: !item.isChosen } : item;
+    });
+
+    // () => {
+    //   (odlItems) =>
+    //     odlItems.map((item) => {
+    //       return item.id === id ? { ...item, isChosen: !item.isChosen } : item;
+    //     });
+    // };
+    // console.log(itemAnswers);
   }
 
   const displayedAnswers = answers.map((items) => {
     const id = nanoid();
+    const isChosen = false;
     return (
       <div key={id} className="displayed-answers">
         <AnswersElement
           value={items}
-          id={nanoid()}
-          isChosen={false}
+          id={id}
+          isChosen={isChosen}
           ChoseAnswers={() => ChoseAnswers(id)}
-          //holdDice={() => holdDice(die.id)}
         />
       </div>
     );
