@@ -1,12 +1,11 @@
 .wrapper {
   display: grid;
   grid-template-columns: auto auto auto auto;
-
   justify-content: space-evenly;
+  height: 50px;
 }
 .displayed-answers {
   text-align: center;
-
   border-radius: 20px;
   cursor: pointer;
 }

@@ -4,25 +4,43 @@ import AnswersElement from "./AnswersElement";
 import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
-  //console.log(props.id);
-  //
   const wrongAnswers = props.data.incorrect_answers;
   const rightAnswer = props.data.correct_answer;
-  const [answers, setAnswers] = React.useState(
-    wrongAnswers.concat(rightAnswer)
-  );
+  const allAnswers = wrongAnswers.concat(rightAnswer);
+  //const [joinedAnswers, setAllAnswer] = React.useState(AnswersOject());
 
-  var shuffle = require("shuffle-array");
-  shuffle(answers);
+  const [randomArray, setRandomArray] = React.useState([]);
+  console.log(props);
+  // function AnswersOject(allAnswers) {
+  //   const setArray = [];
+  //   for (const item of allAnswers) {
+  //     return {
+  //       ...item,
+  //       [item.id]: nanoid(),
+  //     };
+  //   }
+  //   console.log(item);
+  // }
+  // AnswersOject();
 
-  //Choose an answer
-  //
-  function ChoseAnswers(id) {
+  React.useEffect(() => {
+    var shuffle = require("shuffle-array");
+    setRandomArray(shuffle(allAnswers));
+  }, [props]);
+
+  function ChoseAnswers(value) {
     // const [itemAnswers, setItemAnswers] = React.useState([]);
-    console.log(id);
-    displayedAnswers.map((item) => {
-      return item.id === id ? { ...item, isChosen: !item.isChosen } : item;
-    });
+    // console.log(value);
+    setRandomArray((oldItems) =>
+      oldItems.map((item) => {
+        return item.value === value
+          ? { ...item, isChosen: !item.isChosen }
+          : item;
+      })
+    );
+    // displayedAnswers.map((item) => {
+    //   return item.id === id ? { ...item, isChosen: !item.isChosen } : item;
+    // });
 
     // () => {
     //   (odlItems) =>
@@ -33,20 +51,22 @@ export default function QuestionElements(props) {
     // console.log(itemAnswers);
   }
 
-  const displayedAnswers = answers.map((items) => {
+  const displayedAnswers = randomArray.map((items) => {
     const id = nanoid();
-    const isChosen = false;
+    const isChosen = true;
+    const value = items;
     return (
       <div key={id} className="displayed-answers">
         <AnswersElement
-          value={items}
+          value={value}
           id={id}
           isChosen={isChosen}
-          ChoseAnswers={() => ChoseAnswers(id)}
+          ChoseAnswers={() => ChoseAnswers(value)}
         />
       </div>
     );
   });
+  //console.log(displayedAnswers);
 
   //console.log(displayedAnswers);
   //displayedAnswers.forEach((element) => console.log(element.props.value));
