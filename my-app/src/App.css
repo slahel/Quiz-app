@@ -7,12 +7,7 @@
   margin: 20px auto;
   color: #4d5b9e;
 }
-/* .home-screen {
-  background-image: url("./img/headBackgound.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  
-} */
+
 button {
   background-color: #4d5b9e;
   font-size: 20px;
@@ -35,7 +30,4 @@ button:active {
   flex-direction: column;
   align-items: center;
   padding-top: 200px;
-}
-.questions-screen {
-  max-height: 650px;
 }
