@@ -10,6 +10,7 @@ function App() {
     event.preventDefault();
     setGame(true);
   }
+
   return (
     <div className="App">
       {!game && <OpeningScreen />}
