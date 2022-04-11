@@ -4,31 +4,34 @@ import AnswersElement from "./AnswersElement";
 import { nanoid } from "nanoid";
 
 export default function QuestionElements(props) {
-  console.log(props);
+  //console.log(props);
   //
   // const wrongAnswers = props.data.incorrect_answers;
   // const rightAnswer = props.data.correct_answer;
   const [answers, setAnswers] = React.useState(
     props.data.incorrect_answers.concat(props.data.correct_answer)
   );
-  const [answersObj, setAnswersObj] = React.useState([]);
+  //const [answersObj, setAnswersObj] = React.useState([]);
 
   var shuffle = require("shuffle-array");
   shuffle(answers);
 
-  function GetObject() {
-    React.useEffect(() => {
-      answers.map((i) =>
-        setAnswersObj({
-          value: i,
-          id: nanoid(),
-          isChosen: false,
-        })
-      );
-    }, []);
-  }
-  GetObject();
-  console.log(answersObj);
+  answers.map((i) => {
+    console.log({ value: i, id: nanoid(), isChosen: false });
+  });
+  // function GetObject() {
+  //   React.useEffect(() => {
+  //     for (let i = 0; i < answers.length; i++) {
+  //       setAnswersObj({
+  //         value: i,
+  //         id: nanoid(),
+  //         isChosen: false,
+  //       });
+  //     }
+  //   }, []);
+  // }
+  // GetObject();
+  // console.log(answersObj);
   // React.useEffect(() => {
   //   for (let i = 0; i < answers.length; i++) {
   //     console.log(answers[i]);
