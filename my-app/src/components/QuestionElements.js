@@ -16,9 +16,27 @@ export default function QuestionElements(props) {
   var shuffle = require("shuffle-array");
   shuffle(answers);
 
-  answers.map((i) => {
-    console.log({ value: i, id: nanoid(), isChosen: false });
-  });
+  function GetObject() {
+    //const [array, setArray] = React.useState([]);
+    answers.map((i) => {
+      console.log({ value: i, id: nanoid(), isChosen: false });
+    });
+  }
+  GetObject();
+  // const [array, setArray] = React.useState([]);
+  // React.useEffect(() => {
+  //   answers.map((i) => {
+  //     setArray({ value: i, id: nanoid(), isChosen: false });
+  //   });
+  // }, []);
+
+  // console.log(array);
+  // //  React.useEffect(function () {
+  //    fetch("https://swapi.dev/api/people/1")
+  //      .then((res) => res.json())
+  //      .then((data) => setStarWarsData(data));
+  //  });
+
   // function GetObject() {
   //   React.useEffect(() => {
   //     for (let i = 0; i < answers.length; i++) {
