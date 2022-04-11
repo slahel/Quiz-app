@@ -38,12 +38,14 @@ button:active {
   height: 50px;
 }
 .question--answers {
-  text-align: center;
-  /* padding: 5px 15px;
-  border: solid 1px #4d5b9e; */
+  padding: 10px 5px 0px 5px;
+  border: solid 1px #4d5b9e;
   border-radius: 20px;
   cursor: pointer;
 }
 .question--answers:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+.question--answers.ischosen: {
+  background-color: #d6dbf5;
 }
