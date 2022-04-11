@@ -11,7 +11,10 @@ export default function Question() {
       "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
     )
       .then((response) => response.json())
-      .then((data) => setQuestionData(data.results));
+      .then((data) =>
+        setQuestionData(
+          data.results.map((question) => ({
+            id: nanoid(),
             ...question,
             answers: [
               ...question.incorrect_answers,
