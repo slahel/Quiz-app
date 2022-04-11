@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 //import QuestionElements from "./QuestionElements";
 
@@ -35,6 +35,24 @@ export default function Question() {
   //   });
   // }
 
+  const chosenAnswer = (question) => (event) => {
+    event.target.id === question.correct_answer
+      ? console.log("Correct!!")
+      : console.log("Incorrect, the answer is: " + question.correct_answer);
+
+    setQuestionData((questions) =>
+      questionData.map((i) =>
+        i.id === question.id
+          ? {
+              ...i,
+              answered: event.target.id,
+              isCorrect: event.target.id === question.correct_answer,
+            }
+          : i
+      )
+    );
+  };
+
   return (
     <div>
       {questionData.map((question) => {
@@ -46,14 +64,14 @@ export default function Question() {
                 <p
                   key={answer}
                   id={answer}
-                  // onClick={selectAnswer(question)}
-                  // className={[
-                  //   "question--answers",
-                  //   question.answered === answer &&
-                  //     (question.isCorrect ? "correct" : "incorrect"),
-                  // ]
-                  //   .filter(Boolean)
-                  //   .join(" ")}
+                  onClick={chosenAnswer(question)}
+                  className={[
+                    "question--answers",
+                    question.answered === answer &&
+                      (question.isCorrect ? "correct" : "incorrect"),
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                 >
                   {answer}
                 </p>

@@ -31,3 +31,19 @@ button:active {
   align-items: center;
   padding-top: 200px;
 }
+.answer--container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-evenly;
+  height: 50px;
+}
+.question--answers {
+  text-align: center;
+  /* padding: 5px 15px;
+  border: solid 1px #4d5b9e; */
+  border-radius: 20px;
+  cursor: pointer;
+}
+.question--answers:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
