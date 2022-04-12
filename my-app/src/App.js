@@ -6,6 +6,7 @@ import { nanoid } from "nanoid";
 
 function App() {
   const [game, setGame] = React.useState(false);
+  // const [chosenAnswer, setChosenAnswer] = React.useState(false);
 
   function startGame(event) {
     event.preventDefault();
@@ -23,7 +24,7 @@ function App() {
   function Question() {
     const [questionData, setQuestionData] = React.useState([]);
     //const [gameOver, setGameOver] = React.useState(false);
-    //const [chosenAnswer, setChosenAnswer] = React.useState(false);
+    const [chosenAnswer, setChosenAnswer] = React.useState("not-chosen");
 
     React.useEffect(() => {
       fetch(
@@ -46,33 +47,24 @@ function App() {
 
     console.log(questionData);
 
-    //    const chosenAnswer = (question) => (event) => {
-    //   event.target.id === question.correct_answer
-    //     ? console.log("Correct!!")
-    //     : console.log("Incorrect, the answer is: " + question.correct_answer);
+    const selectAnswer = (question) => (event) => {
+      event.target.id === question.correct_answer
+        ? console.log("Correct!!")
+        : console.log("Incorrect, the answer is: " + question.correct_answer);
 
-    //   setQuestionData((questions) =>
-    //     questionData.map((i) =>
-    //       i.id === question.id
-    //         ? {
-    //             ...i,
-    //             answered: event.target.id,
-    //             isCorrect: event.target.id === question.correct_answer,
-    //           }
-    //         : i
-    //     )
-    //   );
-    // };
-
-    const chosenAnswer = (id) => (event) => {
-      event.preventDefault();
-      setQuestionData((oldData) =>
-        oldData.map((item) => {
-          return item.id === id ? { ...item, isChosen: !item.isChosen } : item;
-        })
+      setQuestionData((questions) =>
+        questions.map((el) =>
+          el.id === question.id
+            ? {
+                ...el,
+                answered: event.target.id,
+                isCorrect: event.target.id === question.correct_answer,
+              }
+            : el
+        )
       );
     };
-    console.log(question);
+
     // function holdDice(id) {
     //   setDice((oldDice) =>
     //     oldDice.map((die) => {
@@ -92,13 +84,15 @@ function App() {
                   <div
                     key={answer}
                     id={answer}
-                    onClick={chosenAnswer(answer)}
-                    isChosen={chosenAnswer}
+                    onClick={selectAnswer(question)}
+                    ischosen={"not-chosen"}
                     className={[
                       "question--answers",
-
                       // question.answered === answer &&
-                      //   (question.isCorrect ? "correct" : "incorrect"),
+                      //   (question.ischosen ? "chosen" : "not-chosen"),
+
+                      question.answered === answer &&
+                        (question.isCorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}

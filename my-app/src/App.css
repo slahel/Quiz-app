@@ -46,6 +46,17 @@ button:active {
 .question--answers:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
-.question--answers.ischosen: {
+/* .chosen {
   background-color: #d6dbf5;
+} */
+.correct {
+  background-color: #d6dbf5;
+  border: 1px solid green;
+  border-radius: 20px;
+}
+
+.incorrect {
+  background-color: lightcoral;
+  border: 1px solid red;
+  border-radius: 1rem;
 }
