@@ -38,6 +38,7 @@ button:active {
   height: 50px;
 }
 .question--answers {
+  text-align: center;
   padding: 10px 5px 0px 5px;
   border: solid 1px #4d5b9e;
   border-radius: 20px;
@@ -49,6 +50,10 @@ button:active {
 /* .chosen {
   background-color: #d6dbf5;
 } */
+
+.chosen {
+  background-color: #d6dbf5;
+}
 .correct {
   background-color: lightgreen;
   border: 1px solid green;
@@ -59,7 +64,4 @@ button:active {
   background-color: lightcoral;
   border: 1px solid red;
   border-radius: 1rem;
-}
-.chosen {
-  background-color: #d6dbf5;
 }

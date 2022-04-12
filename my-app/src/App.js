@@ -68,13 +68,13 @@ function App() {
     };
 
     function checkAnwers() {
-      console.log("not all questions answered");
-
       const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
         console.log("answers checked");
         console.log(count);
         setResults(true);
+      } else {
+        console.log("not all questions answered");
       }
 
       // event.target.id === question.correct_answer
@@ -121,6 +121,7 @@ function App() {
                   </div>
                 ))}
               </div>
+              <hr />
             </div>
           );
         })}
