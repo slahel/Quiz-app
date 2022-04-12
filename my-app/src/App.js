@@ -1,12 +1,9 @@
 import "./App.css";
 import React from "react";
 import { nanoid } from "nanoid";
-// import OpeningScreen from "./components/OpeningScreen";
-// import QuestionsScreen from "./components/QuestionsScreen";
 
 function App() {
   const [game, setGame] = React.useState(false);
-  // const [chosenAnswer, setChosenAnswer] = React.useState(false);
 
   function startGame(event) {
     event.preventDefault();
@@ -76,21 +73,6 @@ function App() {
       } else {
         console.log("not all questions answered");
       }
-
-      // event.target.id === question.correct_answer
-      //   ? console.log("Correct!!")
-      //   : console.log("Incorrect, the answer is: " + question.correct_answer);
-
-      // setQuestionData((questions) =>
-      //   questions.map((i) =>
-      //     i.id === question.id
-      //       ? {
-      //           ...i,
-      //           isCorrect: event.target.id === question.correct_answer,
-      //         }
-      //       : i
-      //   )
-      // );
     }
 
     return (
@@ -110,9 +92,6 @@ function App() {
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
-
-                      // question.answered ? "chosen" : "not-chosen",
-                      // //   (question.isCorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}
