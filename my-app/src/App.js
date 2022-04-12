@@ -26,6 +26,7 @@ function App() {
     //const [gameOver, setGameOver] = React.useState(false);
     const [questionData, setQuestionData] = React.useState([]);
     const [count, setCount] = React.useState(0);
+    const [results, setResults] = React.useState(false);
 
     React.useEffect(() => {
       fetch(
@@ -51,7 +52,7 @@ function App() {
     const selectAnswer = (question) => (event) => {
       event.target.id === question.correct_answer
         ? setCount(count + 1)
-        : console.log("Incorrect, the answer is: " + question.correct_answer);
+        : setCount(count);
 
       setQuestionData((questions) =>
         questions.map((i) =>
@@ -65,10 +66,17 @@ function App() {
         )
       );
     };
-    console.log(count);
 
     function checkAnwers() {
-      console.log("answers checked");
+      console.log("not all questions answered");
+
+      const allAnswered = questionData.every((i) => i.answered);
+      if (allAnswered) {
+        console.log("answers checked");
+        console.log(count);
+        setResults(true);
+      }
+
       // event.target.id === question.correct_answer
       //   ? console.log("Correct!!")
       //   : console.log("Incorrect, the answer is: " + question.correct_answer);
