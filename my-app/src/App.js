@@ -104,6 +104,9 @@ function App() {
             </div>
           );
         })}
+        <div className="results">
+          {results ? `You have scored ${count}/5` : `Select your answers...`}
+        </div>
         <button onClick={checkAnwers}>Check answers</button>
       </div>
     );
