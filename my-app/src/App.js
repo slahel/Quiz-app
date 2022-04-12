@@ -53,14 +53,14 @@ function App() {
         : console.log("Incorrect, the answer is: " + question.correct_answer);
 
       setQuestionData((questions) =>
-        questions.map((el) =>
-          el.id === question.id
+        questions.map((i) =>
+          i.id === question.id
             ? {
-                ...el,
+                ...i,
                 answered: event.target.id,
-                isCorrect: event.target.id === question.correct_answer,
+                ischosen: event.target.id,
               }
-            : el
+            : i
         )
       );
     };
@@ -88,11 +88,11 @@ function App() {
                     ischosen={"not-chosen"}
                     className={[
                       "question--answers",
-                      // question.answered === answer &&
-                      //   (question.ischosen ? "chosen" : "not-chosen"),
-
                       question.answered === answer &&
-                        (question.isCorrect ? "correct" : "incorrect"),
+                        (question.ischosen ? "chosen" : "not-chosen"),
+
+                      // question.answered ? "chosen" : "not-chosen",
+                      // //   (question.isCorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}

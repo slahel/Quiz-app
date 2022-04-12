@@ -50,7 +50,7 @@ button:active {
   background-color: #d6dbf5;
 } */
 .correct {
-  background-color: #d6dbf5;
+  background-color: lightgreen;
   border: 1px solid green;
   border-radius: 20px;
 }
@@ -59,4 +59,7 @@ button:active {
   background-color: lightcoral;
   border: 1px solid red;
   border-radius: 1rem;
+}
+.chosen {
+  background-color: #d6dbf5;
 }
