@@ -17,14 +17,15 @@ function App() {
       <div className="opening-screen">
         <h1>Quizzical</h1>
         <h3>Test your general knowledge in 5 questions</h3>
+        <button onClick={startGame}>Start quiz</button>
       </div>
     );
   }
 
   function Question() {
-    const [questionData, setQuestionData] = React.useState([]);
     //const [gameOver, setGameOver] = React.useState(false);
-    const [chosenAnswer, setChosenAnswer] = React.useState("not-chosen");
+    const [questionData, setQuestionData] = React.useState([]);
+    const [count, setCount] = React.useState(0);
 
     React.useEffect(() => {
       fetch(
@@ -49,7 +50,7 @@ function App() {
 
     const selectAnswer = (question) => (event) => {
       event.target.id === question.correct_answer
-        ? console.log("Correct!!")
+        ? setCount(count + 1)
         : console.log("Incorrect, the answer is: " + question.correct_answer);
 
       setQuestionData((questions) =>
@@ -64,14 +65,25 @@ function App() {
         )
       );
     };
+    console.log(count);
 
-    // function holdDice(id) {
-    //   setDice((oldDice) =>
-    //     oldDice.map((die) => {
-    //       return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
-    //     })
-    //   );
-    // }
+    function checkAnwers() {
+      console.log("answers checked");
+      // event.target.id === question.correct_answer
+      //   ? console.log("Correct!!")
+      //   : console.log("Incorrect, the answer is: " + question.correct_answer);
+
+      // setQuestionData((questions) =>
+      //   questions.map((i) =>
+      //     i.id === question.id
+      //       ? {
+      //           ...i,
+      //           isCorrect: event.target.id === question.correct_answer,
+      //         }
+      //       : i
+      //   )
+      // );
+    }
 
     return (
       <div>
@@ -104,6 +116,7 @@ function App() {
             </div>
           );
         })}
+        <button onClick={checkAnwers}>Check answers</button>
       </div>
     );
   }
@@ -112,11 +125,6 @@ function App() {
     <div className="App">
       {!game && <OpeningScreen />}
       {game && <Question />}
-      {!game ? (
-        <button onClick={startGame}>Start quiz</button>
-      ) : (
-        <button>Check answers</button>
-      )}
     </div>
   );
 }
