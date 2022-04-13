@@ -58,12 +58,12 @@ function App() {
                 ...i,
                 answered: event.target.id,
                 ischosen: event.target.id,
+                isCorrect: event.target.id === question.correct_answer,
               }
             : i
         )
       );
     };
-
     function checkAnwers() {
       const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
@@ -92,6 +92,8 @@ function App() {
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
+                      question.checked === answer &&
+                        (question.isCorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}
