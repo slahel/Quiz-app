@@ -7,7 +7,7 @@ function App() {
 
   function startGame(event) {
     event.preventDefault();
-    setGame(true);
+    setGame(!game);
   }
   function OpeningScreen() {
     return (
@@ -109,7 +109,8 @@ function App() {
         <div className="results">
           {results ? `You have scored ${count}/5` : `Select your answers...`}
         </div>
-        <button onClick={checkAnwers}>Check answers</button>
+        {!results && <button onClick={checkAnwers}>Check answers</button>}
+        {results && <button onClick={startGame}>Start a new game</button>}
       </div>
     );
   }
