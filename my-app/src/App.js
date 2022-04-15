@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { nanoid } from "nanoid";
-import background from "./img/imgbackground.png";
+import background from "./img/img2.png";
 
 function App() {
   const [game, setGame] = React.useState(false);
