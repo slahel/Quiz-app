@@ -6,6 +6,16 @@
   display: block;
   margin: 20px auto;
   color: #4d5b9e;
+
+  z-index: 2;
+}
+.img-background {
+  position: absolute;
+  display: block;
+  width: 600px;
+  margin: 40px 0 0 75px;
+  opacity: 0.1;
+  z-index: 0;
 }
 
 button {
@@ -20,6 +30,7 @@ button {
   cursor: pointer;
   display: block;
   margin: 20px auto;
+  z-index: 1;
 }
 button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
@@ -30,19 +41,26 @@ button:active {
   flex-direction: column;
   align-items: center;
   padding-top: 200px;
+  z-index: 1;
 }
 .answer--container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   justify-content: space-evenly;
   height: 50px;
+  z-index: 1;
 }
 .question--answers {
   text-align: center;
-  padding: 10px 5px 0px 5px;
+  font-size: 12px;
+  font-weight: 900;
+  min-width: 100px;
+  height: 20px;
+  padding: 12px 10px 12px 10px;
   border: solid 1px #4d5b9e;
   border-radius: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 .question--answers:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);

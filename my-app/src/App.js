@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { nanoid } from "nanoid";
+import background from "./img/imgbackground.png";
 
 function App() {
   const [game, setGame] = React.useState(false);
@@ -63,36 +64,22 @@ function App() {
         )
       );
     };
+
     function checkAnwers(question) {
       const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
-        //
-        // const isCorrect = questionData.map(answers);
-        // const iscorrect = question.ischosen === question.correct_answer;
-
-        //
-
         setQuestionData((questions) =>
           questions.map((i) =>
             i.id === question.id
               ? {
                   ...i,
-                  iscorrect: question.answered === question.correct_answer,
-                  // isCorrect: event.target.id === question.correct_answer,
+                  checked: question.answered,
+                  iscorrect: question.correct_answer,
                 }
               : i
           )
         );
-        //         //
-        //         setQuestionData(
-        //           question.map((i) =>
-        //           {...i,
-        //                   iscorrect: questionData.ischosen === question.correct_answer,
-        //                 }
-        //               : i
-        //           )
-        //         );
-        //         //
+
         console.log("answers checked");
         console.log(count);
         setResults(true);
@@ -143,6 +130,7 @@ function App() {
 
   return (
     <div className="App">
+      <img src={background} className="img-background" />
       {!game && <OpeningScreen />}
       {game && <Question />}
     </div>
