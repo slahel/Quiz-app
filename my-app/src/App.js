@@ -27,7 +27,7 @@ function App() {
 
     React.useEffect(() => {
       fetch(
-        "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
+        "https://opentdb.com/api.php?amount=5&category=17&difficulty=medium&type=multiple"
       )
         .then((response) => response.json())
         .then((data) =>
