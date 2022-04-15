@@ -20,7 +20,6 @@ function App() {
   }
 
   function Question() {
-    //const [gameOver, setGameOver] = React.useState(false);
     const [questionData, setQuestionData] = React.useState([]);
     const [count, setCount] = React.useState(0);
     const [results, setResults] = React.useState(false);
@@ -58,15 +57,42 @@ function App() {
                 ...i,
                 answered: event.target.id,
                 ischosen: event.target.id,
-                isCorrect: event.target.id === question.correct_answer,
+                // isCorrect: event.target.id === question.correct_answer,
               }
             : i
         )
       );
     };
-    function checkAnwers() {
+    function checkAnwers(question) {
       const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
+        //
+        // const isCorrect = questionData.map(answers);
+        // const iscorrect = question.ischosen === question.correct_answer;
+
+        //
+
+        setQuestionData((questions) =>
+          questions.map((i) =>
+            i.id === question.id
+              ? {
+                  ...i,
+                  iscorrect: question.answered === question.correct_answer,
+                  // isCorrect: event.target.id === question.correct_answer,
+                }
+              : i
+          )
+        );
+        //         //
+        //         setQuestionData(
+        //           question.map((i) =>
+        //           {...i,
+        //                   iscorrect: questionData.ischosen === question.correct_answer,
+        //                 }
+        //               : i
+        //           )
+        //         );
+        //         //
         console.log("answers checked");
         console.log(count);
         setResults(true);
@@ -92,8 +118,8 @@ function App() {
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
-                      question.checked === answer &&
-                        (question.isCorrect ? "correct" : "incorrect"),
+                      question.checked == answer &&
+                        (question.iscorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}
