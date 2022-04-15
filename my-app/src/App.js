@@ -67,21 +67,24 @@ function App() {
 
     function checkAnwers(question) {
       const allAnswered = questionData.every((i) => i.answered);
+
       if (allAnswered) {
         setQuestionData((questions) =>
           questions.map((i) =>
             i.id === question.id
               ? {
                   ...i,
-                  checked: question.answered,
-                  iscorrect: question.correct_answer,
+                  // answered: event.target.id,
+                  // ischosen: event.target.id,
+                  iscorrect: question.ischosen === question.correct_answer,
                 }
               : i
           )
         );
 
+        //questionData.answered
         console.log("answers checked");
-        console.log(count);
+
         setResults(true);
       } else {
         console.log("not all questions answered");
@@ -105,8 +108,6 @@ function App() {
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
-                      question.checked == answer &&
-                        (question.iscorrect ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}
