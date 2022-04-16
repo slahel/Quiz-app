@@ -29,7 +29,7 @@ button:active {
 .img-background {
   position: absolute;
   width: 900px;
-  top: -20px;
+  top: -30px;
   left: 250px;
   opacity: 0.1;
   z-index: -1;

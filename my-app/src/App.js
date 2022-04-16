@@ -44,7 +44,7 @@ function App() {
         );
     }, []);
 
-    console.log(questionData);
+    //console.log(questionData);
 
     const selectAnswer = (question) => (event) => {
       event.target.id === question.correct_answer
@@ -64,26 +64,41 @@ function App() {
         )
       );
     };
-
+    //const selectAnswer = (question) => (event) =>{
     function checkAnwers(question) {
+      // const checkAnwers = (question) => (event) => {
       const allAnswered = questionData.every((i) => i.answered);
+      // const iscorrect = question.answered === question.correct_answer;
 
+      //
+      // setDice((oldDice) =>
+      //   oldDice.map((die) => {
+      //     return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      //   })
+      // );
+
+      //
       if (allAnswered) {
         setQuestionData((questions) =>
           questions.map((i) =>
             i.id === question.id
               ? {
                   ...i,
-                  // answered: event.target.id,
-                  // ischosen: event.target.id,
-                  iscorrect: question.ischosen === question.correct_answer,
+                  iscorrect: question.answered === question.correct_answer,
+                  // iscorrect:
+                  //   question.answered ===
+                  //   (question.correct_answer
+                  //     ? console.log("Correct!!")
+                  //     : console.log(
+                  //         `Incorrect, the answer is: ${question.correct_answer}`
+                  //       )),
                 }
               : i
           )
         );
 
-        //questionData.answered
         console.log("answers checked");
+        console.log(question);
 
         setResults(true);
       } else {
@@ -103,11 +118,12 @@ function App() {
                     key={answer}
                     id={answer}
                     onClick={selectAnswer(question)}
-                    ischosen={"not-chosen"}
                     className={[
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
+                      question.iscorrect === answer &&
+                        (question.correct_answer ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
                       .join(" ")}
@@ -123,7 +139,11 @@ function App() {
         <div className="results">
           {results ? `You have scored ${count}/5` : `Select your answers...`}
         </div>
-        {!results && <button onClick={checkAnwers}>Check answers</button>}
+        {!results && (
+          <button onClick={() => checkAnwers(questionData)}>
+            Check answers
+          </button>
+        )}
         {results && <button onClick={startGame}>Start a new game</button>}
       </div>
     );
@@ -131,7 +151,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={background} className="img-background" />
+      <img src={background} className="img-background" alt="backgroung-img" />
       {!game && <OpeningScreen />}
       {game && <Question />}
     </div>
