@@ -172,7 +172,12 @@ function App() {
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
-                      results ? `${isCorrect}` : null,
+                      question.answered === answer &&
+                        (results
+                          ? question.answered === question.correct_answer
+                            ? "correct"
+                            : "incorrect"
+                          : null),
                       // results
                       //   ? question.answered === question.correct_answer
                       //     ? "correct"
