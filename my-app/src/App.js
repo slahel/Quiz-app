@@ -24,7 +24,7 @@ function App() {
     const [questionData, setQuestionData] = React.useState([]);
     const [count, setCount] = React.useState(0);
     const [results, setResults] = React.useState(false);
-    //const [isCorrect, setIsCorrect] = React.useState(false);
+    const [isCorrect, setIsCorrect] = React.useState(null);
 
     React.useEffect(() => {
       fetch(
@@ -81,15 +81,41 @@ function App() {
       //
       if (allAnswered) {
         setResults(true);
-        const iscorrect = questionData.map((question) => {
-          question.answered === question.correct_answer
-            ? // ? setIsCorrect(true)
-              // : setIsCorrect(false);
-              console.log("correct")
-            : console.log("wrong");
-        });
 
-        // setQuestionData((questions) =>
+        // React.useEffect(
+        //   () =>
+        //     setQuestionData(
+        //       questionData.map((question) => {
+        //         question.answered === question.correct_answer
+        //           ? // ? setIsCorrect(true)
+        //             // : setIsCorrect(false);
+        //             console.log("correct")
+        //           : console.log("wrong");
+        //       })
+        //     ),
+        //   [results]
+        // );
+
+        // setQuestionData(
+        //   questionData.map((question) => {
+        //     question.answered === question.correct_answer
+        //       ? setIsCorrect("correct")
+        //       : console.log("wrong");
+        //     // ? setIsCorrect(true)
+        //     // : setIsCorrect(false);
+        //     // console.log("correct")
+        //   })
+        // );
+        const isCorrect = () =>
+          questionData.map((question) => {
+            question.answered === question.correct_answer
+              ? setIsCorrect("correct")
+              : // : setIsCorrect(false);
+                // console.log("correct")
+                console.log("wrong");
+          });
+
+        // // setQuestionData((questions) =>
         //   questions.map((i) =>
         //     i.id === question.id
         //       ? {
@@ -121,7 +147,7 @@ function App() {
         //       : i
         //   )
         // );
-
+        isCorrect();
         console.log("answers checked");
         console.log(question);
       } else {
@@ -141,13 +167,21 @@ function App() {
                     key={answer}
                     id={answer}
                     onClick={selectAnswer(question)}
-                    //iscorrect={isCorrect}
+                    // iscorrect={isCorrect}
                     className={[
                       "question--answers",
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
+                      results ? `${isCorrect}` : null,
+                      // results
+                      //   ? question.answered === question.correct_answer
+                      //     ? "correct"
+                      //     : "incorrect"
+                      //   : null,
+
+                      //
                       //isCorrect ? "correct" : "incorrect",
-                      //question.iscorrect === answer &&
+                      // question.iscorrect === answer &&
                       //   (question.correct_answer ? "correct" : "incorrect"),
                     ]
                       .filter(Boolean)
