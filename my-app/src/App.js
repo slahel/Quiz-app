@@ -79,12 +79,16 @@ function App() {
         {questionData.map((question) => {
           return (
             <div key={question.id} className="question--container">
-              <h3 className="question">{question.question}</h3>
+              <h3
+                className="question"
+                dangerouslySetInnerHTML={{ __html: question.question }}
+              ></h3>
               <div className="answer--container">
                 {question.answers.map((answer) => (
                   <div
                     key={answer}
                     id={answer}
+                    dangerouslySetInnerHTML={{ __html: answer }}
                     onClick={selectAnswer(question)}
                     className={[
                       "question--answers",
@@ -103,9 +107,7 @@ function App() {
                     ]
                       .filter(Boolean)
                       .join(" ")}
-                  >
-                    {answer}
-                  </div>
+                  ></div>
                 ))}
               </div>
               <hr />
