@@ -68,7 +68,16 @@ button:active {
 .chosen {
   background-color: #d6dbf5;
 }
+.faded {
+  opacity: 0.6;
+}
 .correct {
+  background-color: lightgreen;
+  border: 1px solid green;
+  border-radius: 20px;
+}
+.correct_answer {
+  opacity: 0.6;
   background-color: lightgreen;
   border: 1px solid green;
   border-radius: 20px;

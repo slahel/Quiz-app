@@ -24,7 +24,7 @@ function App() {
     const [questionData, setQuestionData] = React.useState([]);
     const [count, setCount] = React.useState(0);
     const [results, setResults] = React.useState(false);
-    const [isCorrect, setIsCorrect] = React.useState(null);
+    //const [isCorrect, setIsCorrect] = React.useState(null);
 
     React.useEffect(() => {
       fetch(
@@ -109,7 +109,7 @@ function App() {
         const isCorrect = () =>
           questionData.map((question) => {
             question.answered === question.correct_answer
-              ? setIsCorrect("correct")
+              ? console.log("right")
               : // : setIsCorrect(false);
                 // console.log("correct")
                 console.log("wrong");
@@ -130,23 +130,6 @@ function App() {
         //   )
         // );
 
-        // setQuestionData((questions) =>
-        //   questions.map((i) =>
-        //     i.id === question.id
-        //       ? {
-        //           ...i,
-        //           iscorrect: question.answered === question.correct_answer,
-        //           // iscorrect:
-        //           //   question.answered ===
-        //           //   (question.correct_answer
-        //           //     ? console.log("Correct!!")
-        //           //     : console.log(
-        //           //         `Incorrect, the answer is: ${question.correct_answer}`
-        //           //       )),
-        //         }
-        //       : i
-        //   )
-        // );
         isCorrect();
         console.log("answers checked");
         console.log(question);
@@ -170,6 +153,7 @@ function App() {
                     // iscorrect={isCorrect}
                     className={[
                       "question--answers",
+                      results && `faded`,
                       question.answered === answer &&
                         (question.ischosen ? "chosen" : "not-chosen"),
                       question.answered === answer &&
@@ -178,16 +162,14 @@ function App() {
                             ? "correct"
                             : "incorrect"
                           : null),
-                      // results
-                      //   ? question.answered === question.correct_answer
-                      //     ? "correct"
-                      //     : "incorrect"
-                      //   : null,
 
-                      //
-                      //isCorrect ? "correct" : "incorrect",
-                      // question.iscorrect === answer &&
-                      //   (question.correct_answer ? "correct" : "incorrect"),
+                      // results
+                      //   ? question.correct_answer === !question.answered
+                      //     ? question.correct_answer
+                      //       ? "correct_answer"
+                      //       : null
+                      //     : null
+                      //   : null,
                     ]
                       .filter(Boolean)
                       .join(" ")}
