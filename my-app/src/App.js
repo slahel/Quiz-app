@@ -59,6 +59,7 @@ function App() {
                 ...i,
                 answered: event.target.id,
                 ischosen: event.target.id,
+                iscorrect: question.correct_answer,
                 // isCorrect: event.target.id === question.correct_answer,
               }
             : i
@@ -70,13 +71,6 @@ function App() {
       // const checkAnwers = (question) => (event) => {
       const allAnswered = questionData.every((i) => i.answered);
       // const iscorrect = question.answered === question.correct_answer;
-
-      //
-      // setDice((oldDice) =>
-      //   oldDice.map((die) => {
-      //     return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
-      //   })
-      // );
 
       //
       if (allAnswered) {
@@ -96,22 +90,13 @@ function App() {
         //   [results]
         // );
 
-        // setQuestionData(
-        //   questionData.map((question) => {
-        //     question.answered === question.correct_answer
-        //       ? setIsCorrect("correct")
-        //       : console.log("wrong");
-        //     // ? setIsCorrect(true)
-        //     // : setIsCorrect(false);
-        //     // console.log("correct")
-        //   })
-        // );
         const isCorrect = () =>
           questionData.map((question) => {
             question.answered === question.correct_answer
-              ? console.log("right")
-              : // : setIsCorrect(false);
-                // console.log("correct")
+              ? // : setCount(count);
+                console.log("right")
+              : // : // : setIsCorrect(false);
+                //   // console.log("correct")
                 console.log("wrong");
           });
 
@@ -162,6 +147,20 @@ function App() {
                             ? "correct"
                             : "incorrect"
                           : null),
+                      results && question.iscorrect === answer
+                        ? "correct"
+                        : null,
+                      //results && (question.iscorrect ? "correct" : null),
+                      // results && (question.correct_answer ? "correct" : null),
+                      // (results
+                      //   ? question.answered === !question.correct_answer
+                      //     ? question.correct_answer? ()
+                      //     : "incorrect"
+                      //   : null),
+
+                      // results && question.answered === !question.correct_answer
+                      //   ? question.correct_answer && `correct`
+                      //   : null,
 
                       // results
                       //   ? question.correct_answer === !question.answered
