@@ -24,7 +24,6 @@ function App() {
     const [questionData, setQuestionData] = React.useState([]);
     const [count, setCount] = React.useState(0);
     const [results, setResults] = React.useState(false);
-    //const [isCorrect, setIsCorrect] = React.useState(null);
 
     React.useEffect(() => {
       fetch(
@@ -60,64 +59,16 @@ function App() {
                 answered: event.target.id,
                 ischosen: event.target.id,
                 iscorrect: question.correct_answer,
-                // isCorrect: event.target.id === question.correct_answer,
               }
             : i
         )
       );
     };
-    //const selectAnswer = (question) => (event) =>{
-    function checkAnwers(question) {
-      // const checkAnwers = (question) => (event) => {
-      const allAnswered = questionData.every((i) => i.answered);
-      // const iscorrect = question.answered === question.correct_answer;
 
-      //
+    function checkAnwers(question) {
+      const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
         setResults(true);
-
-        // React.useEffect(
-        //   () =>
-        //     setQuestionData(
-        //       questionData.map((question) => {
-        //         question.answered === question.correct_answer
-        //           ? // ? setIsCorrect(true)
-        //             // : setIsCorrect(false);
-        //             console.log("correct")
-        //           : console.log("wrong");
-        //       })
-        //     ),
-        //   [results]
-        // );
-
-        const isCorrect = () =>
-          questionData.map((question) => {
-            question.answered === question.correct_answer
-              ? // : setCount(count);
-                console.log("right")
-              : // : // : setIsCorrect(false);
-                //   // console.log("correct")
-                console.log("wrong");
-          });
-
-        // // setQuestionData((questions) =>
-        //   questions.map((i) =>
-        //     i.id === question.id
-        //       ? {
-        //           ...i,
-        //           iscorrect:
-        //             question.answered === question.correct_answer
-        //               ? console.log("correct")
-        //               : console.log("wrong"),
-        //           // isCorrect: event.target.id === question.correct_answer,
-        //         }
-        //       : i
-        //   )
-        // );
-
-        isCorrect();
-        console.log("answers checked");
-        console.log(question);
       } else {
         console.log("not all questions answered");
       }
@@ -135,7 +86,6 @@ function App() {
                     key={answer}
                     id={answer}
                     onClick={selectAnswer(question)}
-                    // iscorrect={isCorrect}
                     className={[
                       "question--answers",
                       results && `faded`,
@@ -150,25 +100,6 @@ function App() {
                       results && question.iscorrect === answer
                         ? "correct"
                         : null,
-                      //results && (question.iscorrect ? "correct" : null),
-                      // results && (question.correct_answer ? "correct" : null),
-                      // (results
-                      //   ? question.answered === !question.correct_answer
-                      //     ? question.correct_answer? ()
-                      //     : "incorrect"
-                      //   : null),
-
-                      // results && question.answered === !question.correct_answer
-                      //   ? question.correct_answer && `correct`
-                      //   : null,
-
-                      // results
-                      //   ? question.correct_answer === !question.answered
-                      //     ? question.correct_answer
-                      //       ? "correct_answer"
-                      //       : null
-                      //     : null
-                      //   : null,
                     ]
                       .filter(Boolean)
                       .join(" ")}
