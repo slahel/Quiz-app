@@ -44,13 +44,7 @@ function App() {
         );
     }, []);
 
-    //console.log(questionData);
-
     const selectAnswer = (question) => (event) => {
-      event.target.id === question.correct_answer
-        ? setCount(count + 1)
-        : setCount(count);
-
       setQuestionData((questions) =>
         questions.map((i) =>
           i.id === question.id
@@ -68,6 +62,12 @@ function App() {
     function checkAnwers(question) {
       const allAnswered = questionData.every((i) => i.answered);
       if (allAnswered) {
+        question.map((i) =>
+          i.iscorrect === i.answered
+            ? setCount((count) => count + 1)
+            : setCount((count) => count)
+        );
+
         setResults(true);
       } else {
         console.log("not all questions answered");
